@@ -1,56 +1,105 @@
-.App {
-  text-align: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-h1 {
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  width:1600px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
   color: #333;
 }
 
+/* Main Content Layout */
+.content-wrapper {
+  display: flex;
+  width: 1200px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Left Side - House Image */
+.image-container {
+  flex: 1;
+  background-image: url('../public/pexels-photo-106399.jpeg'); /* Adjust to your image path */
+  background-size: cover;
+  background-position:right;
+  min-height: 0px;
+  width: 50%;
+}
+
+/* Right Side - Form */
+.form-container {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* House Form */
 .house-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 400px;
-  margin: 0 auto;
+  width: 100%;
 }
 
-.house-form div {
+.form-group {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
-.house-form label {
+.form-group label {
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.house-form input,
-.house-form select {
-  padding: 5px;
-  width: 150px;
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-.house-form button {
+/* Submit Button */
+.submit-btn {
   padding: 10px;
-  background-color: #007bff;
+  background: linear-gradient(90deg, #007bff, #00c4ff);
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  font-size: 1.1rem;
+  transition: transform 0.2s, background 0.3s;
 }
 
-.house-form button:hover {
-  background-color: #0056b3;
+.submit-btn:hover {
+  background: linear-gradient(90deg, #0056b3, #009cff);
+  transform: scale(1.05);
 }
 
-.result {
-  margin-top: 20px;
-  font-size: 1.2em;
-  color: #333;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
 
-.result.error {
-  color: red;
+  .image-container {
+    min-height: 250px;
+  }
 }

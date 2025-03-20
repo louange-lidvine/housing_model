@@ -42,22 +42,15 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
         }));
     };
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
         setPredictedPrice(null);
 
         try {
-            console.log("making request");
             const response = await axios.post(
-                "http://localhost:8000/predict",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
+                "http://127.0.0.1:8000/predict",
+                formData
             );
             setPredictedPrice(response.data.predicted_price);
         } catch (err) {
@@ -66,11 +59,9 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
         }
     };
 
-    console.log("Here are the form data: ", formData)
-
     return (
         <form onSubmit={handleSubmit} className="house-form">
-            <div>
+            <div className="form-group">
                 <label>Area (sq ft):</label>
                 <input
                     type="number"
@@ -80,7 +71,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     required
                 />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Bedrooms:</label>
                 <input
                     type="number"
@@ -90,7 +81,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     required
                 />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Bathrooms:</label>
                 <input
                     type="number"
@@ -100,7 +91,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     required
                 />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Floors:</label>
                 <input
                     type="number"
@@ -110,7 +101,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     required
                 />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Year Built:</label>
                 <input
                     type="number"
@@ -120,7 +111,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     required
                 />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Location:</label>
                 <select
                     name="Location"
@@ -131,7 +122,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     <option value="Suburbs">Suburbs</option>
                 </select>
             </div>
-            <div>
+            <div className="form-group">
                 <label>Condition:</label>
                 <select
                     name="Condition"
@@ -143,7 +134,7 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     <option value="Fair">Fair</option>
                 </select>
             </div>
-            <div>
+            <div className="form-group">
                 <label>Garage:</label>
                 <select
                     name="Garage"
@@ -154,7 +145,9 @@ const HouseForm: React.FC<Props> = ({ setPredictedPrice, setError }) => {
                     <option value="No">No</option>
                 </select>
             </div>
-            <button type="submit">Predict Price</button>
+            <button type="submit" className="submit-btn">
+                Predict Price
+            </button>
         </form>
     );
 };

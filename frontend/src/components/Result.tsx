@@ -11,7 +11,7 @@ const Result: React.FC<Props> = ({ price, error }) => {
     }
     if (price !== null) {
         return (
-            <div className="result">
+            <div className="result success">
                 Predicted Price: ${price.toLocaleString()}
             </div>
         );
